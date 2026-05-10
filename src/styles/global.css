@@ -8,10 +8,15 @@
   --color-line: #2A2A2A;
   --color-brass: #B8964B;
 
-  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
 
   --container-content: 720px;
+}
+
+:root {
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-body: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 html {
@@ -21,7 +26,7 @@ html {
 body {
   background-color: var(--color-bg);
   color: var(--color-cream);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -30,13 +35,25 @@ body {
 }
 body.body-loaded { opacity: 1; }
 
+h1, h2, h3, .display, .hero-headline, .section-headline {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  letter-spacing: -0.02em;
+}
+h1, .hero-headline {
+  font-variation-settings: "opsz" 144;
+}
+h2, h3, .section-headline {
+  font-variation-settings: "opsz" 96;
+}
+
 /* Grain overlay — film stock texture, site-wide */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  opacity: 0.04;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.09;
   pointer-events: none;
   z-index: 9999;
   mix-blend-mode: overlay;
@@ -74,10 +91,11 @@ html.js-ready .reveal:not(.is-visible) {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: 11px;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.22em;
   color: var(--color-brass);
 }
 .eyebrow::before {
@@ -163,14 +181,29 @@ html.js-ready .reveal:not(.is-visible) {
 .streak-1 { top: 22%; left: -50%; animation: streak-drift-a 60s linear infinite; }
 .streak-2 { top: 66%; left: -30%; animation: streak-drift-b 80s linear infinite; opacity: 0.6; }
 
-/* Hero radial glow */
+/* Hero radial glow — midnight blue */
 .hero-glow {
   position: absolute;
-  top: 12%;
-  left: -10%;
-  width: 1100px;
-  height: 1100px;
-  background: radial-gradient(circle, rgba(184,150,75,0.14) 0%, rgba(184,150,75,0.05) 35%, transparent 65%);
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1400px;
+  height: 1400px;
+  background: radial-gradient(circle, rgba(28, 48, 110, 0.38) 0%, rgba(20, 36, 92, 0.18) 30%, rgba(14, 24, 64, 0.08) 55%, transparent 72%);
+  filter: blur(140px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Hero accent glow — warm brass */
+.hero-glow-accent {
+  position: absolute;
+  top: 55%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(184,150,75,0.12), transparent 70%);
   filter: blur(60px);
   pointer-events: none;
   z-index: 0;
