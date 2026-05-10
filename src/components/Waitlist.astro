@@ -1,0 +1,218 @@
+---
+---
+
+<section id="waitlist" class="reveal px-6 py-32 md:py-44">
+  <div class="mx-auto" style="max-width: 560px;">
+    <div class="text-center">
+      <p class="eyebrow" style="display:inline-flex;">Early Access</p>
+      <h2 class="mt-6 font-serif text-4xl font-normal leading-tight text-cream md:text-5xl">
+        Join the waitlist.
+      </h2>
+      <p class="mt-5 font-sans text-base leading-relaxed text-muted">
+        First access. No noise between now and launch.
+      </p>
+    </div>
+
+    <div id="waitlist-form-wrap" class="mt-16">
+      <form id="waitlist-form" novalidate class="space-y-9">
+        <!-- Honeypot -->
+        <div aria-hidden="true" class="absolute h-0 -z-10 overflow-hidden opacity-0 pointer-events-none">
+          <label for="website">Website</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required autocomplete="name" />
+          <span class="focus-bar" aria-hidden="true"></span>
+        </div>
+
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="email" />
+          <span class="focus-bar" aria-hidden="true"></span>
+        </div>
+
+        <div class="form-field">
+          <label for="what_you_do">What you do</label>
+          <input
+            type="text"
+            id="what_you_do"
+            name="what_you_do"
+            required
+            placeholder="Solo consultant, freelance designer, indie founder&hellip;"
+          />
+          <span class="focus-bar" aria-hidden="true"></span>
+        </div>
+
+        <div class="form-field">
+          <label for="biggest_bottleneck">Biggest bottleneck</label>
+          <textarea
+            id="biggest_bottleneck"
+            name="biggest_bottleneck"
+            required
+            rows="4"
+            placeholder="What&rsquo;s eating your week?"
+          ></textarea>
+          <span class="focus-bar" aria-hidden="true"></span>
+        </div>
+
+        <div id="form-error" role="alert" class="hidden font-sans text-sm text-[#c0392b]"></div>
+
+        <div class="pt-4">
+          <button type="submit" id="submit-btn" class="submit-btn">
+            Request Access
+          </button>
+          <p class="mt-5 text-center font-sans text-xs leading-relaxed text-muted">
+            We&rsquo;ll only email you about Sotto. No newsletters, no list shares.
+          </p>
+        </div>
+      </form>
+    </div>
+
+    <div id="waitlist-success" class="hidden mt-20 text-center">
+      <div class="mx-auto h-px w-12 bg-brass opacity-60"></div>
+      <p class="mt-10 font-serif text-3xl leading-snug text-cream md:text-4xl">
+        Received. We&rsquo;ll be in touch when Sotto opens.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .form-field label {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-brass);
+    font-weight: 500;
+  }
+  .form-field input,
+  .form-field textarea {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--color-line);
+    padding: 12px 0;
+    font-family: var(--font-sans);
+    font-size: 16px;
+    color: var(--color-cream);
+    width: 100%;
+    border-radius: 0;
+    transition: border-color 200ms ease;
+    resize: none;
+  }
+  .form-field input::placeholder,
+  .form-field textarea::placeholder {
+    color: #4a4a4a;
+  }
+  .form-field input:focus,
+  .form-field textarea:focus {
+    outline: none;
+  }
+
+  .submit-btn {
+    width: 100%;
+    height: 56px;
+    border: 1px solid var(--color-brass);
+    background: transparent;
+    color: var(--color-brass);
+    font-family: var(--font-serif);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    transition: background-color 280ms ease, color 280ms ease;
+    cursor: pointer;
+  }
+  .submit-btn:hover:not(:disabled) {
+    background: var(--color-brass);
+    color: var(--color-bg);
+  }
+  .submit-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  /* Error state — red border on entire form */
+  #waitlist-form.is-error .form-field input,
+  #waitlist-form.is-error .form-field textarea {
+    border-bottom-color: #c0392b;
+  }
+</style>
+
+<script>
+  const WEBHOOK = "https://n8n.bysotto.com/webhook/sotto-lead";
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const formWrap = document.getElementById("waitlist-form-wrap")!;
+  const form = document.getElementById("waitlist-form") as HTMLFormElement;
+  const successEl = document.getElementById("waitlist-success")!;
+  const errorEl = document.getElementById("form-error")!;
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+
+  const mountedAt = Date.now();
+
+  // 2-second guard
+  submitBtn.disabled = true;
+  setTimeout(() => { submitBtn.disabled = false; }, 2000);
+
+  function showError(msg: string) {
+    errorEl.textContent = msg;
+    errorEl.classList.remove("hidden");
+    form.classList.add("is-error");
+  }
+  function clearError() {
+    errorEl.textContent = "";
+    errorEl.classList.add("hidden");
+    form.classList.remove("is-error");
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    clearError();
+
+    const data = new FormData(form);
+    const honeypot = (data.get("website") as string) ?? "";
+    const name = ((data.get("name") as string) ?? "").trim();
+    const email = ((data.get("email") as string) ?? "").trim();
+    const what_you_do = ((data.get("what_you_do") as string) ?? "").trim();
+    const biggest_bottleneck = ((data.get("biggest_bottleneck") as string) ?? "").trim();
+
+    if (honeypot) return;
+    if (Date.now() - mountedAt < 2000) return;
+
+    if (!name) { showError("Please enter your name."); return; }
+    if (!EMAIL_RE.test(email)) { showError("Please enter a valid email address."); return; }
+    if (what_you_do.length < 10) { showError("Tell us a bit more about what you do (at least 10 characters)."); return; }
+    if (biggest_bottleneck.length < 10) { showError("Tell us a bit more about your bottleneck (at least 10 characters)."); return; }
+
+    submitBtn.disabled = true;
+    const originalLabel = submitBtn.textContent;
+    submitBtn.textContent = "Sending…";
+
+    try {
+      const res = await fetch(WEBHOOK, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, what_you_do, biggest_bottleneck }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+      formWrap.style.transition = "opacity 400ms ease";
+      formWrap.style.opacity = "0";
+      setTimeout(() => {
+        formWrap.classList.add("hidden");
+        successEl.classList.remove("hidden");
+      }, 420);
+    } catch {
+      showError("Something went wrong. Please try again or email hello@bysotto.com.");
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
+    }
+  });
+</script>

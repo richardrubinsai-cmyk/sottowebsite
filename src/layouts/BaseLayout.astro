@@ -1,0 +1,141 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Sotto — Quiet systems for serious operators.",
+  description = "Seven AI workflows that run your inbox, leads, content, payments, and meetings — built for people running a business with one set of hands.",
+} = Astro.props;
+
+const ogImage = new URL("/og-image.png", Astro.site ?? Astro.url).toString();
+const canonical = Astro.url?.href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <meta name="theme-color" content="#0A0A0A" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" sizes="32x32" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500&display=swap"
+    />
+  </head>
+  <body class="min-h-screen overflow-x-hidden">
+    <slot />
+
+    <!-- Sticky CTA — appears after hero leaves viewport -->
+    <a
+      id="sticky-cta"
+      href="#waitlist"
+      class="sticky-cta"
+      aria-label="Request access — jump to waitlist"
+    >
+      Request Access
+    </a>
+
+    <script>
+      // Mark JS ready so .reveal opacity rules apply (avoid FOUC on hidden content for no-JS / SEO).
+      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!prefersReduced) document.documentElement.classList.add("js-ready");
+
+      // Page fade-in
+      requestAnimationFrame(() => document.body.classList.add("body-loaded"));
+
+      const els = document.querySelectorAll<HTMLElement>(".reveal");
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add("is-visible");
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+        );
+        els.forEach((el) => io.observe(el));
+      } else {
+        els.forEach((el) => el.classList.add("is-visible"));
+      }
+
+      // Sticky CTA visibility — show after hero leaves, hide when waitlist enters
+      const sticky = document.getElementById("sticky-cta");
+      const hero = document.querySelector<HTMLElement>("[data-hero-section]");
+      const waitlist = document.getElementById("waitlist");
+
+      let heroVisible = true;
+      let waitlistVisible = false;
+
+      function updateSticky() {
+        if (!sticky) return;
+        const shouldShow = !heroVisible && !waitlistVisible;
+        sticky.classList.toggle("is-visible", shouldShow);
+      }
+
+      if ("IntersectionObserver" in window && hero && sticky) {
+        const heroIO = new IntersectionObserver(
+          (entries) => {
+            heroVisible = entries[0].isIntersecting;
+            updateSticky();
+          },
+          { threshold: 0.05 }
+        );
+        heroIO.observe(hero);
+      }
+      if ("IntersectionObserver" in window && waitlist && sticky) {
+        const wlIO = new IntersectionObserver(
+          (entries) => {
+            waitlistVisible = entries[0].isIntersecting;
+            updateSticky();
+          },
+          { threshold: 0.15 }
+        );
+        wlIO.observe(waitlist);
+      }
+
+      // Smooth-scroll-to-form with 80px offset
+      function scrollToWaitlist(e: Event) {
+        const target = waitlist;
+        if (!target) return;
+        e.preventDefault();
+        const top = target.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: prefersReduced ? "auto" : "smooth" });
+      }
+      document
+        .querySelectorAll<HTMLAnchorElement>('a[href="#waitlist"]')
+        .forEach((a) => a.addEventListener("click", scrollToWaitlist));
+    </script>
+  </body>
+</html>

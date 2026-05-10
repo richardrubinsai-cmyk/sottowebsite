@@ -1,0 +1,239 @@
+---
+const workflows = [
+  {
+    name: "Inbox Filter",
+    description: "Triages your Gmail. Drafts replies. Pings you when it matters.",
+    outcome: "You stop opening your inbox in the morning.",
+    icon: "envelope",
+  },
+  {
+    name: "Content Engine",
+    description: "Turns a raw idea into a structured draft — format, hook, body, CTA — ready to edit.",
+    outcome: "Content ships on a schedule, not a mood.",
+    icon: "quill",
+  },
+  {
+    name: "Lead Logger",
+    description: "Captures every inbound lead from email and form. Enriches and scores. Logs to your CRM.",
+    outcome: "Nothing slips through between meetings.",
+    icon: "magnet",
+  },
+  {
+    name: "Payment Tracker",
+    description: "Monitors Stripe for paid, overdue, and failed. Fires alerts and follow-up sequences.",
+    outcome: "You know what you’re owed without checking.",
+    icon: "banknote",
+  },
+  {
+    name: "Daily Brief",
+    description: "Pulls your calendar, open tasks, and key metrics each morning. One summary, one channel.",
+    outcome: "The day starts with a plan, not a scramble.",
+    icon: "sunrise",
+  },
+  {
+    name: "Proposal Builder",
+    description: "Takes a short intake and returns a structured proposal draft in your voice and format.",
+    outcome: "Proposals out the same day, not the same week.",
+    icon: "document",
+  },
+  {
+    name: "Ops Pulse",
+    description: "Weekly digest of what ran, what flagged, and what needs a decision from you.",
+    outcome: "You stay in control without staying in the weeds.",
+    icon: "heartbeat",
+  },
+];
+
+// Tightened layout: bigger hub (+60%), satellites pulled to 65% of prior radius
+const cx = 400, cy = 400;
+const hubR = 112;        // was 70 → +60%
+const satR = 36;
+const R = 169;           // was 260 → 65%
+const N = workflows.length;
+const positions = workflows.map((w, i) => {
+  const angle = (-Math.PI / 2) + (i * (2 * Math.PI / N));
+  const x = cx + R * Math.cos(angle);
+  const y = cy + R * Math.sin(angle);
+  const x1 = cx + hubR * Math.cos(angle);
+  const y1 = cy + hubR * Math.sin(angle);
+  const x2 = x - satR * Math.cos(angle);
+  const y2 = y - satR * Math.sin(angle);
+  const labelR = R + satR + 22;
+  const lx = cx + labelR * Math.cos(angle);
+  const ly = cy + labelR * Math.sin(angle);
+  let anchor: "start" | "middle" | "end" = "middle";
+  if (Math.cos(angle) > 0.25) anchor = "start";
+  else if (Math.cos(angle) < -0.25) anchor = "end";
+  return { ...w, angle, x, y, x1, y1, x2, y2, lx, ly, anchor, lineDelay: (i * 0.55).toFixed(2), dotDelay: (i * 0.35).toFixed(2) };
+});
+
+// Icon path data (24x24 viewBox), brass line-art, 1.5px stroke
+const iconPaths: Record<string, string> = {
+  envelope: "M3 6 L21 6 L21 18 L3 18 Z M3 6 L12 13 L21 6",
+  quill:    "M5 19 C 8 16, 14 10, 19 5 C 19 9, 16 14, 11 17 L 5 19 Z M9 15 L 11 17",
+  magnet:   "M5 4 L5 12 A 7 7 0 0 0 19 12 L19 4 M5 4 L9 4 L9 12 A 3 3 0 0 0 15 12 L15 4 L19 4",
+  banknote: "M3 7 L17 7 L21 11 L21 17 L7 17 L3 13 Z M9 12 A 2 2 0 1 0 9 11.99 Z",
+  sunrise:  "M4 17 L20 17 M2 17 A 10 10 0 0 1 22 17 M12 4 L12 7 M5 8 L7 10 M19 8 L17 10",
+  document: "M5 3 L15 3 L19 7 L19 21 L5 21 Z M15 3 L15 7 L19 7 M8 12 L16 12 M8 16 L14 16",
+  heartbeat:"M3 12 L7 12 L9 7 L12 17 L14 12 L17 12 L19 9 L21 12",
+};
+---
+
+<section class="reveal px-6 py-24 md:py-40">
+  <div class="mx-auto max-w-5xl">
+    <div class="mx-auto max-w-content text-center">
+      <p class="eyebrow" style="display:inline-flex;">The Stack</p>
+      <h2 class="mt-6 font-serif text-4xl font-normal leading-tight text-cream md:text-5xl">
+        Seven workflows. One system.
+      </h2>
+      <p class="mx-auto mt-5 max-w-[34rem] font-sans text-base leading-relaxed text-muted md:text-lg">
+        Each one runs autonomously. All seven feed the same brain.
+      </p>
+    </div>
+
+    <div class="mt-20 hidden md:block">
+      <div class="mx-auto" style="max-width: 760px;">
+        <svg
+          viewBox="0 0 800 800"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-label="Seven Sotto workflows arranged around a central router"
+          class="w-full h-auto"
+        >
+          <defs>
+            <radialGradient id="hub-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#B8964B" stop-opacity="0.22"/>
+              <stop offset="60%" stop-color="#B8964B" stop-opacity="0.06"/>
+              <stop offset="100%" stop-color="#B8964B" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <!-- soft hub glow -->
+          <circle cx={cx} cy={cy} r={hubR + 90} fill="url(#hub-glow)"/>
+
+          <!-- faint guide ring -->
+          <circle cx={cx} cy={cy} r={R} fill="none" stroke="#2A2A2A" stroke-width="1" stroke-dasharray="2 6" opacity="0.5"/>
+
+          <!-- connectors -->
+          {positions.map((p) => (
+            <line
+              class="stack-line"
+              x1={p.x1}
+              y1={p.y1}
+              x2={p.x2}
+              y2={p.y2}
+              stroke="#B8964B"
+              stroke-width="1"
+              stroke-opacity="0.35"
+              style={`animation-delay: ${p.lineDelay}s`}
+            />
+          ))}
+
+          <!-- travelling pulse dots — one per connector -->
+          {positions.map((p) => (
+            <circle
+              r="3"
+              class="pulse-dot"
+              style={`offset-path: path('M ${p.x2} ${p.y2} L ${p.x1} ${p.y1}'); animation-delay: ${p.dotDelay}s;`}
+            />
+          ))}
+
+          <!-- hub -->
+          <g>
+            <circle cx={cx} cy={cy} r={hubR} fill="#0A0A0A" stroke="#B8964B" stroke-width="2"/>
+            <circle cx={cx} cy={cy} r={hubR - 14} fill="none" stroke="#B8964B" stroke-width="0.75" opacity="0.4"/>
+            <text
+              x={cx}
+              y={cy + 2}
+              text-anchor="middle"
+              font-family="Cormorant Garamond, Georgia, serif"
+              font-size="32"
+              fill="#F5F1E8"
+              letter-spacing="4"
+            >SOTTO</text>
+            <text
+              x={cx}
+              y={cy + 28}
+              text-anchor="middle"
+              font-family="Inter, sans-serif"
+              font-size="11"
+              fill="#9A9A9A"
+              letter-spacing="3"
+            >ROUTER</text>
+          </g>
+
+          <!-- satellites -->
+          {positions.map((p, i) => (
+            <g class="stack-node" tabindex="0" data-idx={i}>
+              <circle cx={p.x} cy={p.y} r={satR} fill="#0A0A0A" stroke="#3A3122" stroke-width="1" class="stack-node-circle"/>
+              <circle cx={p.x} cy={p.y} r={satR - 6} fill="none" stroke="#B8964B" stroke-width="0.75" opacity="0.35" class="stack-node-inner"/>
+              <g transform={`translate(${p.x - 12} ${p.y - 12})`}>
+                <path
+                  d={iconPaths[p.icon]}
+                  fill="none"
+                  stroke="#B8964B"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </g>
+              <text
+                x={p.lx}
+                y={p.ly}
+                text-anchor={p.anchor}
+                font-family="Cormorant Garamond, Georgia, serif"
+                font-size="17"
+                fill="#F5F1E8"
+                class="stack-node-label"
+              >{p.name}</text>
+              <text
+                x={p.lx}
+                y={p.ly + 18}
+                text-anchor={p.anchor}
+                font-family="Inter, sans-serif"
+                font-size="11"
+                fill="#B8964B"
+                opacity="0"
+                class="stack-node-outcome"
+              >{p.outcome}</text>
+            </g>
+          ))}
+        </svg>
+      </div>
+    </div>
+
+    <!-- Accessible / mobile fallback grid -->
+    <ul class="mt-20 grid grid-cols-1 gap-x-10 gap-y-8 md:mt-24 md:grid-cols-3">
+      {workflows.map((w) => (
+        <li>
+          <h3 class="font-serif text-xl font-normal text-cream">{w.name}</h3>
+          <p class="mt-2 font-sans text-sm leading-relaxed text-brass">{w.outcome}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .stack-node { cursor: pointer; outline: none; }
+  .stack-node-circle,
+  .stack-node-inner,
+  .stack-node-label,
+  .stack-node-outcome {
+    transition: all 280ms ease;
+  }
+  .stack-node:hover .stack-node-circle,
+  .stack-node:focus-visible .stack-node-circle {
+    fill: #1A140C;
+    stroke: #B8964B;
+    stroke-width: 1.5;
+  }
+  .stack-node:hover .stack-node-inner,
+  .stack-node:focus-visible .stack-node-inner {
+    opacity: 0.9;
+  }
+  .stack-node:hover .stack-node-outcome,
+  .stack-node:focus-visible .stack-node-outcome {
+    opacity: 1;
+  }
+</style>

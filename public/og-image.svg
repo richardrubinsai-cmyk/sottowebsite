@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="og-glow" cx="0.5" cy="0.5" r="0.6">
+      <stop offset="0%" stop-color="#1A140C" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#0A0A0A"/>
+  <rect width="1200" height="630" fill="url(#og-glow)"/>
+  <text x="600" y="290" font-family="Cormorant Garamond, Georgia, serif" font-size="120" font-weight="500" fill="#F5F1E8" text-anchor="middle" letter-spacing="14">Sotto</text>
+  <rect x="560" y="335" width="80" height="1" fill="#B8964B"/>
+  <text x="600" y="395" font-family="Inter, Arial, sans-serif" font-size="18" fill="#9A9A9A" text-anchor="middle" letter-spacing="6" font-weight="500">QUIET SYSTEMS FOR SERIOUS OPERATORS</text>
+</svg>

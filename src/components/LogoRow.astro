@@ -1,0 +1,110 @@
+---
+const logos = [
+  { name: "n8n",       kind: "text-mono" },
+  { name: "OpenAI",    kind: "openai" },
+  { name: "Anthropic", kind: "anthropic" },
+  { name: "Stripe",    kind: "stripe" },
+  { name: "Telegram",  kind: "telegram" },
+  { name: "Google",    kind: "google" },
+];
+---
+
+<section class="reveal px-6" style="padding-top: 120px; padding-bottom: 120px;">
+  <div class="mx-auto max-w-5xl text-center">
+    <p class="eyebrow justify-center" style="display:inline-flex;">Built On</p>
+    <h2 class="mt-6 font-serif font-normal leading-tight text-cream" style="font-size: clamp(2rem, 4vw, 3rem);">
+      The stack you already trust.
+    </h2>
+
+    <div class="logo-row mt-16">
+      {logos.map((l) => (
+        <div class="logo-cell" aria-label={l.name}>
+          {l.kind === "text-mono" && (
+            <span class="lm-n8n">n8n</span>
+          )}
+          {l.kind === "openai" && (
+            <span class="lm-flex">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                <path fill="currentColor" d="M22.28 9.82a5.98 5.98 0 0 0-.52-4.91 6.05 6.05 0 0 0-6.52-2.9A6.06 6.06 0 0 0 4.98 4.18a5.98 5.98 0 0 0-4 2.9 6.06 6.06 0 0 0 .74 7.1 5.98 5.98 0 0 0 .52 4.91 6.06 6.06 0 0 0 6.52 2.9 5.98 5.98 0 0 0 4.51 2.01 6.06 6.06 0 0 0 5.78-4.19 5.98 5.98 0 0 0 4-2.9 6.06 6.06 0 0 0-.77-7.09Zm-9.02 12.6a4.5 4.5 0 0 1-2.88-1.04l.14-.08 4.78-2.76a.78.78 0 0 0 .39-.68v-6.74l2.02 1.17a.07.07 0 0 1 .04.05v5.58a4.5 4.5 0 0 1-4.5 4.5ZM3.6 18.49a4.48 4.48 0 0 1-.54-3.03l.14.08 4.78 2.76a.78.78 0 0 0 .79 0l5.84-3.37v2.33a.07.07 0 0 1-.03.06l-4.83 2.79a4.5 4.5 0 0 1-6.15-1.62Zm-1.26-10.4a4.48 4.48 0 0 1 2.34-1.97v5.69a.78.78 0 0 0 .39.67l5.82 3.36-2.02 1.17a.07.07 0 0 1-.07 0L4.97 16.2a4.5 4.5 0 0 1-1.63-6.14ZM19.4 11.5l-5.84-3.38 2.02-1.16a.07.07 0 0 1 .07 0l4.83 2.79a4.5 4.5 0 0 1-.7 8.11v-5.69a.78.78 0 0 0-.38-.67Zm2-3.04-.14-.09-4.78-2.78a.78.78 0 0 0-.79 0l-5.83 3.37V6.63a.07.07 0 0 1 .03-.06l4.83-2.79a4.5 4.5 0 0 1 6.69 4.66Zm-12.63 4.18-2.02-1.17a.07.07 0 0 1-.04-.05V5.84a4.5 4.5 0 0 1 7.4-3.46l-.14.08L9.18 5.22a.78.78 0 0 0-.39.68Zm1.1-2.36 2.6-1.5 2.6 1.5v3l-2.6 1.5-2.6-1.5Z"/>
+              </svg>
+              <span>OpenAI</span>
+            </span>
+          )}
+          {l.kind === "anthropic" && (
+            <span class="lm-flex">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path fill="currentColor" d="M14.6 3h3.4l-6.4 18H8.2l6.4-18Zm-7.5 0h3.4l-6.4 18H.7l6.4-18Z"/>
+              </svg>
+              <span>Anthropic</span>
+            </span>
+          )}
+          {l.kind === "stripe" && (
+            <span class="lm-stripe">stripe</span>
+          )}
+          {l.kind === "telegram" && (
+            <span class="lm-flex">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                <path fill="currentColor" d="M21.5 3.4 2.7 10.7c-1.3.5-1.3 1.3-.2 1.7l4.8 1.5 1.8 5.6c.2.6.4.9.9.9.4 0 .6-.2.8-.5l2.4-2.4 5 3.7c.9.5 1.6.2 1.8-.9l3.3-15.5c.3-1.2-.5-1.7-1.4-1.4Zm-3.6 4-9 8.1-.4 4 1.9-3.6 9.8-7.6c.4-.3-.1-.5-.7-.2L9.2 13.7Z"/>
+              </svg>
+              <span>Telegram</span>
+            </span>
+          )}
+          {l.kind === "google" && (
+            <span class="lm-google">
+              <span class="g">G</span><span>oogle</span>
+            </span>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <p class="mt-12 font-sans text-sm leading-relaxed text-muted">
+      Sotto orchestrates the stack — it doesn&rsquo;t replace it.
+    </p>
+  </div>
+</section>
+
+<style>
+  .logo-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+    align-items: center;
+    color: #9A9A9A;
+  }
+  @media (max-width: 767px) {
+    .logo-row { grid-template-columns: repeat(3, 1fr); gap: 32px 16px; }
+  }
+  .logo-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    color: #9A9A9A;
+    opacity: 0.85;
+  }
+  .lm-flex { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-sans); font-size: 16px; font-weight: 500; letter-spacing: 0.01em; color: #9A9A9A; }
+  .lm-n8n {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: #9A9A9A;
+  }
+  .lm-stripe {
+    font-family: var(--font-sans);
+    font-size: 22px;
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: -0.04em;
+    color: #9A9A9A;
+  }
+  .lm-google {
+    font-family: var(--font-sans);
+    font-size: 18px;
+    font-weight: 500;
+    color: #9A9A9A;
+    letter-spacing: -0.01em;
+  }
+  .lm-google .g { font-weight: 600; }
+</style>
