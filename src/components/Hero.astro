@@ -1,20 +1,14 @@
 ---
+import HeroSparklesBackground from "./HeroSparklesBackground";
 ---
 
 <section data-hero-section class="relative min-h-screen w-full overflow-hidden">
+  <HeroSparklesBackground client:load />
   <!-- Background atmospherics -->
   <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-glow-accent" aria-hidden="true"></div>
   <div class="streak streak-1" aria-hidden="true"></div>
   <div class="streak streak-2" aria-hidden="true"></div>
-
-  <!-- Wordmark, top-left -->
-  <a
-    href="/"
-    aria-label="Sotto — home"
-    class="wordmark-link absolute left-8 top-4 z-30 font-serif text-xl tracking-[0.22em] text-cream md:left-12 md:top-6 md:text-2xl"
-  >
-    Sotto
-  </a>
 
   <!-- Two-zone grid -->
   <div class="relative z-20 grid min-h-screen grid-cols-1 md:grid-cols-[5fr_6fr]">
