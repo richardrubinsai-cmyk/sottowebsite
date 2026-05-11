@@ -189,12 +189,39 @@
   }
 
   @media (max-width: 640px) {
+    #waitlist-form-wrap {
+      margin-top: 44px;
+    }
+
     .access-includes {
       grid-template-columns: 1fr;
+      margin-top: 36px;
     }
 
     .access-includes div {
       min-height: auto;
+      padding: 16px 18px;
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr);
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .access-includes p {
+      margin: 0;
+      font-size: 13px;
+    }
+
+    .form-field input,
+    .form-field textarea {
+      font-size: 16px;
+      padding: 13px 0;
+    }
+
+    .submit-btn {
+      height: 58px;
+      font-size: 13px;
+      letter-spacing: 0.16em;
     }
   }
 </style>

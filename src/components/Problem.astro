@@ -3,7 +3,7 @@
 
 <section class="section-band section-band--problem reveal px-6 py-28 md:py-40">
   <div class="mx-auto max-w-content">
-    <div class="space-y-3 font-serif text-3xl font-normal leading-snug text-cream md:text-4xl">
+    <div class="problem-lines space-y-3 font-serif text-3xl font-normal leading-snug text-cream md:text-4xl">
       <p>Email is a swamp.</p>
       <p>Content gets posted on Sundays at midnight, or not at all.</p>
       <p>Leads slip through, payments aren&rsquo;t tracked, and the day starts without a plan.</p>
@@ -16,3 +16,12 @@
     </p>
   </div>
 </section>
+
+<style>
+  @media (max-width: 767px) {
+    .problem-lines {
+      font-size: clamp(2rem, 10vw, 2.55rem);
+      line-height: 1.12;
+    }
+  }
+</style>

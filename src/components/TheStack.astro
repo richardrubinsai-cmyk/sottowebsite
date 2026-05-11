@@ -203,7 +203,7 @@ const iconPaths: Record<string, string> = {
     </div>
 
     <!-- Accessible / mobile fallback grid -->
-    <ul class="mt-20 grid grid-cols-1 gap-x-10 gap-y-8 md:mt-24 md:grid-cols-3">
+    <ul class="stack-mobile-list mt-20 grid grid-cols-1 gap-x-10 gap-y-8 md:mt-24 md:grid-cols-3">
       {workflows.map((w) => (
         <li>
           <h3 class="font-serif text-xl font-normal text-cream">{w.name}</h3>
@@ -235,5 +235,28 @@ const iconPaths: Record<string, string> = {
   .stack-node:hover .stack-node-outcome,
   .stack-node:focus-visible .stack-node-outcome {
     opacity: 1;
+  }
+
+  @media (max-width: 767px) {
+    .stack-mobile-list {
+      margin-top: 46px;
+      gap: 0;
+      border-top: 1px solid rgba(245, 241, 232, 0.08);
+    }
+
+    .stack-mobile-list li {
+      padding: 19px 0;
+      border-bottom: 1px solid rgba(245, 241, 232, 0.08);
+    }
+
+    .stack-mobile-list h3 {
+      font-size: 22px;
+      line-height: 1.15;
+    }
+
+    .stack-mobile-list p {
+      font-size: 13px;
+      line-height: 1.55;
+    }
   }
 </style>

@@ -13,15 +13,15 @@
   <div class="streak streak-2" aria-hidden="true"></div>
 
   <!-- Two-zone grid -->
-  <div class="relative z-20 grid min-h-screen grid-cols-1 md:grid-cols-[5fr_6fr]">
+  <div class="hero-shell relative z-20 grid min-h-screen grid-cols-1 md:grid-cols-[5fr_6fr]">
     <!-- Left text zone -->
-    <div class="flex min-h-screen items-center px-8 pb-20 pt-32 md:pl-14 md:pr-20 md:pt-0">
+    <div class="hero-copy-zone flex min-h-screen items-center px-8 pb-20 pt-32 md:pl-14 md:pr-20 md:pt-0">
       <div class="hero-copy max-w-[40rem]">
         <p class="eyebrow">Quiet systems for serious operators.</p>
 
         <h1
           class="hero-title mt-10 font-serif font-normal text-cream"
-          style="font-size: clamp(4rem, 9.6vw, 8rem); line-height: 0.95;"
+          style="font-size: clamp(3.3rem, 9.6vw, 8rem); line-height: 0.95;"
         >
           The operator&rsquo;s<br /><span>AI stack.</span>
         </h1>
@@ -367,31 +367,80 @@
   }
 
   @media (max-width: 768px) {
+    .hero-shell {
+      min-height: auto;
+    }
+
+    .hero-copy-zone {
+      min-height: auto;
+      padding: 118px 20px 28px;
+    }
+
+    .hero-title {
+      margin-top: 28px;
+      font-size: clamp(3.25rem, 17vw, 4.3rem) !important;
+      line-height: 0.92 !important;
+    }
+
+    .hero-copy > p:not(.eyebrow) {
+      margin-top: 28px;
+      max-width: 22rem;
+      font-size: 16px;
+      line-height: 1.62;
+    }
+
+    .hero-copy .mt-12 {
+      margin-top: 32px;
+    }
+
+    .hero-cta {
+      width: 100%;
+      max-width: 22rem;
+      padding: 15px 18px;
+      text-align: center;
+      letter-spacing: 0.16em;
+    }
+
+    .hero-briefing-zone {
+      min-height: auto;
+      align-items: flex-start;
+      padding: 10px 20px 72px;
+    }
+
     .operator-brief {
       position: relative;
       top: auto;
       left: auto;
       width: 100%;
       max-width: 100%;
-      padding: 22px;
-      transform: rotate(-1.5deg);
-      margin-top: 40px;
+      padding: 18px;
+      transform: none;
+      margin-top: 18px;
     }
 
     .operator-brief__header {
-      margin-top: 30px;
+      margin-top: 24px;
+      padding-bottom: 18px;
     }
 
     .operator-brief__header h2 {
-      font-size: 38px;
+      font-size: 34px;
+    }
+
+    .operator-brief__header p:last-child {
+      font-size: 13px;
+      line-height: 1.55;
     }
 
     .operator-brief__row {
       grid-template-columns: 28px minmax(0, 1fr);
+      gap: 12px;
+      padding: 14px 0;
     }
 
     .operator-brief__row strong {
       grid-column: 2;
+      margin-top: 2px;
     }
 
     .operator-brief__footer {
@@ -404,8 +453,10 @@
       display: none;
     }
 
-    .hero-briefing-zone {
-      align-items: flex-start;
+    .operator-brief__topline {
+      gap: 12px;
+      font-size: 9px;
+      letter-spacing: 0.14em;
     }
 
     .hero-copy::before,
