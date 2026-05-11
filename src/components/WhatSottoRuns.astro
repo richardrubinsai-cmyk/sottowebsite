@@ -1,0 +1,104 @@
+---
+const outcomes = [
+  {
+    label: "Inbox",
+    title: "Important email rises first.",
+    body: "Noise is filtered, replies are drafted, and buying signals are surfaced before the day starts.",
+  },
+  {
+    label: "Pipeline",
+    title: "Every lead gets captured.",
+    body: "Inbound messages and forms are logged, scored, enriched, and routed into the place you already work.",
+  },
+  {
+    label: "Cash",
+    title: "Payments stop drifting.",
+    body: "Stripe events, overdue invoices, failed payments, and chase scripts stay visible without another dashboard.",
+  },
+  {
+    label: "Output",
+    title: "Content and proposals move.",
+    body: "Raw notes become drafts, proposals get structure, and your weekly publishing rhythm stops depending on mood.",
+  },
+];
+---
+
+<section class="section-band section-band--outcomes reveal px-6 py-28 md:py-40">
+  <div class="mx-auto max-w-6xl">
+    <div class="grid gap-12 md:grid-cols-[0.9fr_1.4fr] md:items-end">
+      <div>
+        <p class="eyebrow">What Sotto Runs</p>
+        <h2 class="mt-6 font-serif text-4xl font-normal leading-tight text-cream md:text-5xl">
+          The parts of the business that usually leak.
+        </h2>
+      </div>
+      <p class="max-w-[34rem] font-sans text-base leading-relaxed text-muted md:justify-self-end md:text-lg">
+        It is not another place to check. Sotto sits behind your existing tools and moves the work forward until a decision actually needs you.
+      </p>
+    </div>
+
+    <div class="outcome-grid mt-16 grid grid-cols-1 md:grid-cols-4">
+      {outcomes.map((item) => (
+        <article class="outcome-card">
+          <span>{item.label}</span>
+          <h3>{item.title}</h3>
+          <p>{item.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .outcome-grid {
+    border-top: 1px solid rgba(245, 241, 232, 0.09);
+    border-left: 1px solid rgba(245, 241, 232, 0.08);
+  }
+
+  .outcome-card {
+    min-height: 260px;
+    padding: 28px;
+    border-right: 1px solid rgba(245, 241, 232, 0.08);
+    border-bottom: 1px solid rgba(245, 241, 232, 0.08);
+    background:
+      linear-gradient(180deg, rgba(245, 241, 232, 0.035), transparent),
+      rgba(10, 10, 10, 0.22);
+  }
+
+  .outcome-card span {
+    color: var(--color-brass);
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .outcome-card h3 {
+    margin: 54px 0 0;
+    color: var(--color-cream);
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  .outcome-card p {
+    margin: 18px 0 0;
+    color: var(--color-muted);
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  @media (max-width: 767px) {
+    .outcome-card {
+      min-height: auto;
+    }
+
+    .outcome-card h3 {
+      margin-top: 36px;
+    }
+  }
+</style>

@@ -1,0 +1,111 @@
+---
+const scenarios = [
+  {
+    role: "Solo Consultant",
+    moment: "The inbox has 42 unread messages, two warm leads, and one client waiting on a proposal.",
+    outcome: "Sotto separates signal from noise, drafts the replies, and turns the proposal notes into a structured first pass.",
+  },
+  {
+    role: "Service Founder",
+    moment: "Payments, sales follow-up, and content all depend on the same person remembering the next step.",
+    outcome: "Sotto keeps the follow-ups moving and sends a morning brief with only the decisions that need attention.",
+  },
+  {
+    role: "Technical Operator",
+    moment: "The tools already exist, but the work still falls between Gmail, Stripe, forms, docs, and Telegram.",
+    outcome: "Sotto becomes the routing layer between them, logging what happened and surfacing what changed.",
+  },
+];
+---
+
+<section class="section-band section-band--scenarios reveal px-6 py-28 md:py-40">
+  <div class="mx-auto max-w-6xl">
+    <div class="mx-auto max-w-content text-center">
+      <p class="eyebrow" style="display:inline-flex;">Operator Scenarios</p>
+      <h2 class="mt-6 font-serif text-4xl font-normal leading-tight text-cream md:text-5xl">
+        Built around the week people actually have.
+      </h2>
+      <p class="mx-auto mt-5 max-w-[35rem] font-sans text-base leading-relaxed text-muted md:text-lg">
+        These are the operating moments Sotto is designed for: too much context, too many handoffs, and not enough hours to keep checking every tool.
+      </p>
+    </div>
+
+    <div class="scenario-grid mt-16">
+      {scenarios.map((scenario) => (
+        <article class="scenario-card">
+          <span>{scenario.role}</span>
+          <p class="scenario-card__moment">&ldquo;{scenario.moment}&rdquo;</p>
+          <div class="scenario-card__line" aria-hidden="true"></div>
+          <p class="scenario-card__outcome">{scenario.outcome}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid rgba(245, 241, 232, 0.08);
+    border-left: 1px solid rgba(245, 241, 232, 0.08);
+  }
+
+  .scenario-card {
+    min-height: 340px;
+    padding: 30px;
+    border-right: 1px solid rgba(245, 241, 232, 0.08);
+    border-bottom: 1px solid rgba(245, 241, 232, 0.08);
+    background:
+      linear-gradient(180deg, rgba(245, 241, 232, 0.035), transparent 55%),
+      rgba(8, 8, 8, 0.22);
+  }
+
+  .scenario-card span {
+    color: var(--color-brass);
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .scenario-card__moment {
+    margin: 52px 0 0;
+    color: var(--color-cream);
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+  }
+
+  .scenario-card__line {
+    width: 44px;
+    height: 1px;
+    margin-top: 30px;
+    background: rgba(184, 150, 75, 0.58);
+  }
+
+  .scenario-card__outcome {
+    margin: 26px 0 0;
+    color: var(--color-muted);
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  @media (max-width: 900px) {
+    .scenario-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .scenario-card {
+      min-height: auto;
+    }
+
+    .scenario-card__moment {
+      margin-top: 34px;
+    }
+  }
+</style>

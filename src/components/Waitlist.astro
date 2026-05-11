@@ -1,16 +1,31 @@
 ---
 ---
 
-<section id="waitlist" class="reveal px-6 py-32 md:py-44">
+<section id="waitlist" class="section-band section-band--waitlist reveal px-6 py-28 md:py-40">
   <div class="mx-auto" style="max-width: 560px;">
     <div class="text-center">
       <p class="eyebrow" style="display:inline-flex;">Early Access</p>
       <h2 class="mt-6 font-serif text-4xl font-normal leading-tight text-cream md:text-5xl">
-        Join the waitlist.
+        Request early access.
       </h2>
       <p class="mt-5 font-sans text-base leading-relaxed text-muted">
-        First access. No noise between now and launch.
+        Get the private launch build, workflow map, setup notes, and first access to the operator brief system.
       </p>
+    </div>
+
+    <div class="access-includes mt-12">
+      <div>
+        <span>01</span>
+        <p>Private launch build</p>
+      </div>
+      <div>
+        <span>02</span>
+        <p>Workflow map + setup notes</p>
+      </div>
+      <div>
+        <span>03</span>
+        <p>Direct founder access</p>
+      </div>
     </div>
 
     <div id="waitlist-form-wrap" class="mt-16">
@@ -64,7 +79,7 @@
             Request Access
           </button>
           <p class="mt-5 text-center font-sans text-xs leading-relaxed text-muted">
-            We&rsquo;ll only email you about Sotto. No newsletters, no list shares.
+            We'll only contact you about Sotto early access.
           </p>
         </div>
       </form>
@@ -142,6 +157,45 @@
   #waitlist-form.is-error .form-field input,
   #waitlist-form.is-error .form-field textarea {
     border-bottom-color: #c0392b;
+  }
+
+  .access-includes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid rgba(184, 150, 75, 0.24);
+    border-left: 1px solid rgba(245, 241, 232, 0.08);
+  }
+
+  .access-includes div {
+    min-height: 112px;
+    padding: 18px;
+    border-right: 1px solid rgba(245, 241, 232, 0.08);
+    border-bottom: 1px solid rgba(245, 241, 232, 0.08);
+    background: rgba(10, 10, 10, 0.22);
+  }
+
+  .access-includes span {
+    color: var(--color-brass);
+    font-family: var(--font-display);
+    font-size: 18px;
+  }
+
+  .access-includes p {
+    margin: 22px 0 0;
+    color: rgba(245, 241, 232, 0.76);
+    font-family: var(--font-body);
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  @media (max-width: 640px) {
+    .access-includes {
+      grid-template-columns: 1fr;
+    }
+
+    .access-includes div {
+      min-height: auto;
+    }
   }
 </style>
 

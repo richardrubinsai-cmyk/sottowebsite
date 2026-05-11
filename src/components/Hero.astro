@@ -1,10 +1,12 @@
 ---
-import HeroSparklesBackground from "./HeroSparklesBackground";
 ---
 
 <section data-hero-section class="relative min-h-screen w-full overflow-hidden">
-  <HeroSparklesBackground client:load />
   <!-- Background atmospherics -->
+  <div class="hero-field" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-orbit hero-orbit--outer" aria-hidden="true"></div>
+  <div class="hero-orbit hero-orbit--inner" aria-hidden="true"></div>
   <div class="hero-glow" aria-hidden="true"></div>
   <div class="hero-glow-accent" aria-hidden="true"></div>
   <div class="streak streak-1" aria-hidden="true"></div>
@@ -14,18 +16,19 @@ import HeroSparklesBackground from "./HeroSparklesBackground";
   <div class="relative z-20 grid min-h-screen grid-cols-1 md:grid-cols-[5fr_6fr]">
     <!-- Left text zone -->
     <div class="flex min-h-screen items-center px-8 pb-20 pt-32 md:pl-14 md:pr-20 md:pt-0">
-      <div class="max-w-[40rem]">
+      <div class="hero-copy max-w-[40rem]">
         <p class="eyebrow">Quiet systems for serious operators.</p>
 
         <h1
-          class="mt-10 font-serif font-normal text-cream"
-          style="font-size: clamp(4rem, 9.6vw, 8rem); letter-spacing: -0.02em; line-height: 0.95;"
+          class="hero-title mt-10 font-serif font-normal text-cream"
+          style="font-size: clamp(4rem, 9.6vw, 8rem); line-height: 0.95;"
         >
-          The operator&rsquo;s<br />AI stack.
+          The operator&rsquo;s<br /><span>AI stack.</span>
         </h1>
 
-        <p class="mt-10 max-w-[28rem] font-sans text-base leading-relaxed text-muted md:text-lg">
-          Seven workflows. One system. Built for the people doing the work alone.
+        <p class="mt-10 max-w-[31rem] font-sans text-base leading-relaxed text-muted md:text-lg">
+          Sotto filters your inbox, captures leads, drafts replies, tracks payments, builds proposals,
+          schedules content, and briefs your day before you open your laptop.
         </p>
 
         <div class="mt-12">
@@ -39,289 +42,381 @@ import HeroSparklesBackground from "./HeroSparklesBackground";
       </div>
     </div>
 
-    <!-- Right zone: layered product mockup composition -->
-    <div class="relative hidden md:block" aria-hidden="true">
-      <div class="mockup-stage" data-parallax-stage>
-        <!-- Element C — n8n workflow snippet (back) -->
-        <div
-          class="mockup mockup-n8n"
-          data-parallax="0.7"
-          style="--rest-transform: rotate(-4deg); animation-delay: 800ms;"
-        >
-          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg" width="220" height="140">
-            <rect width="220" height="140" rx="6" fill="#1A1A1A" stroke="#2A2A2A"/>
-            <!-- grid -->
-            <g opacity="0.25" stroke="#3A3A3A" stroke-width="0.5">
-              <path d="M0 30 H220 M0 60 H220 M0 90 H220 M0 120 H220" />
-              <path d="M30 0 V140 M60 0 V140 M90 0 V140 M120 0 V140 M150 0 V140 M180 0 V140" />
-            </g>
-            <!-- connection curves -->
-            <path d="M40 70 C 60 70, 60 40, 80 40" stroke="#7A5BFF" stroke-width="1" fill="none" opacity="0.7"/>
-            <path d="M100 40 C 120 40, 120 70, 140 70" stroke="#7A5BFF" stroke-width="1" fill="none" opacity="0.7"/>
-            <path d="M100 40 C 120 40, 120 100, 140 100" stroke="#1FBAD6" stroke-width="1" fill="none" opacity="0.7"/>
-            <path d="M160 70 C 180 70, 180 100, 200 100" stroke="#1FBAD6" stroke-width="1" fill="none" opacity="0.7"/>
-            <!-- nodes -->
-            <g>
-              <rect x="20" y="58" width="22" height="22" rx="4" fill="#222" stroke="#7A5BFF" stroke-width="1"/>
-              <circle cx="31" cy="69" r="3" fill="#7A5BFF"/>
-            </g>
-            <g>
-              <rect x="78" y="28" width="22" height="22" rx="4" fill="#222" stroke="#7A5BFF" stroke-width="1"/>
-              <circle cx="89" cy="39" r="3" fill="#7A5BFF"/>
-            </g>
-            <g>
-              <rect x="138" y="58" width="22" height="22" rx="4" fill="#222" stroke="#1FBAD6" stroke-width="1"/>
-              <circle cx="149" cy="69" r="3" fill="#1FBAD6"/>
-            </g>
-            <g>
-              <rect x="138" y="88" width="22" height="22" rx="4" fill="#222" stroke="#1FBAD6" stroke-width="1"/>
-              <circle cx="149" cy="99" r="3" fill="#1FBAD6"/>
-            </g>
-            <g>
-              <rect x="196" y="88" width="22" height="22" rx="4" fill="#222" stroke="#1FBAD6" stroke-width="1"/>
-              <circle cx="207" cy="99" r="3" fill="#1FBAD6"/>
-            </g>
-          </svg>
+    <!-- Right zone: Operator brief -->
+    <div
+      class="hero-briefing-zone relative flex min-h-[min(72vh,640px)] items-center justify-center px-6 pb-16 pt-6 md:min-h-0 md:px-10 md:pb-24 md:pt-28"
+    >
+      <div class="operator-brief" role="img" aria-label="Sotto Monday operator brief preview">
+        <div class="operator-brief__topline">
+          <span>SOTTO / MORNING BRIEF</span>
+          <span>07:42</span>
         </div>
 
-        <!-- Element B — Daily Brief preview (mid) -->
-        <div
-          class="mockup mockup-brief"
-          data-parallax="0.85"
-          style="--rest-transform: rotate(3deg); animation-delay: 600ms;"
-        >
-          <div class="brief-card">
-            <div class="brief-header">
-              <span class="brief-eyebrow">Daily Brief</span>
-              <span class="brief-day">Tuesday</span>
+        <div class="operator-brief__header">
+          <p class="operator-brief__kicker">Monday, 12 May</p>
+          <h2>Start here.</h2>
+          <p>Your inbox is filtered. Your calendar is clean. Three decisions need you.</p>
+        </div>
+
+        <div class="operator-brief__ledger">
+          <div class="operator-brief__row operator-brief__row--hot">
+            <span class="operator-brief__index">01</span>
+            <div>
+              <p>Hot lead from Marcus Chen</p>
+              <span>Pricing question + buying signal. Reply drafted.</span>
             </div>
-            <ul class="brief-list">
-              <li><span class="brief-num">3</span> calls today <span class="brief-meta">(first at 10:30 — Marcus Chen, prospect)</span></li>
-              <li><span class="brief-num">2</span> invoices overdue <span class="brief-meta">(£4,200 — chase scripts ready)</span></li>
-              <li><span class="brief-num">1</span> proposal due Friday <span class="brief-meta">(Henderson — draft 80%)</span></li>
-            </ul>
+            <strong>8/10</strong>
+          </div>
+
+          <div class="operator-brief__row">
+            <span class="operator-brief__index">02</span>
+            <div>
+              <p>Two invoices need a chase</p>
+              <span>Studio Mira and Henderson. Follow-ups queued.</span>
+            </div>
+            <strong>GBP 4.2k</strong>
+          </div>
+
+          <div class="operator-brief__row">
+            <span class="operator-brief__index">03</span>
+            <div>
+              <p>Proposal due Friday</p>
+              <span>Draft at 80%. Scope section needs approval.</span>
+            </div>
+            <strong>Draft</strong>
           </div>
         </div>
 
-        <!-- Element A — Telegram message (front) -->
-        <div
-          class="mockup mockup-tg"
-          data-parallax="1.0"
-          style="--rest-transform: rotate(-2deg); animation-delay: 400ms;"
-        >
-          <div class="tg-card">
-            <div class="tg-header">
-              <div class="tg-avatar">S</div>
-              <div class="tg-meta">
-                <div class="tg-name">Sotto</div>
-                <div class="tg-status">bot</div>
-              </div>
-            </div>
-            <div class="tg-body">
-              <div class="tg-bubble">
-                <div class="tg-bubble-title">🟡 HOT LEAD — Score 8/10</div>
-                <div class="tg-line">From: marcus.chen@company.com</div>
-                <div class="tg-line">Subject: Re: Looking for Q1 automation help</div>
-                <div class="tg-spacer"></div>
-                <div class="tg-line tg-faint">Match: pricing question + buying signal</div>
-                <div class="tg-line tg-faint">Suggested reply drafted — review in 2min</div>
-                <div class="tg-time">09:47</div>
-              </div>
-            </div>
+        <div class="operator-brief__footer">
+          <div>
+            <span>Autopilot completed</span>
+            <p>Inbox triage / lead log / content schedule / payment scan</p>
           </div>
+          <a href="#waitlist">Request access</a>
         </div>
+
+        <div class="operator-brief__rail" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div class="operator-side-note" aria-hidden="true">
+        <span>7 workflows</span>
+        <span>1 operating layer</span>
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  /* Stage */
-  .mockup-stage {
+  .hero-field {
     position: absolute;
     inset: 0;
+    background:
+      linear-gradient(105deg, rgba(10, 10, 10, 0.98) 0%, rgba(10, 10, 10, 0.82) 42%, rgba(10, 10, 10, 0.42) 100%),
+      radial-gradient(circle at 16% 72%, rgba(184, 150, 75, 0.16), transparent 32%),
+      radial-gradient(circle at 78% 30%, rgba(45, 70, 132, 0.28), transparent 38%),
+      #0a0a0a;
+    z-index: 0;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: -2px;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.22;
+    background-image:
+      linear-gradient(rgba(184, 150, 75, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184, 150, 75, 0.06) 1px, transparent 1px);
+    background-size: 112px 112px;
+    mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 72%, transparent 100%);
+  }
+
+  .hero-orbit {
+    position: absolute;
+    left: 52%;
+    top: 48%;
+    z-index: 1;
+    border: 1px solid rgba(184, 150, 75, 0.1);
+    pointer-events: none;
+    transform: translate(-50%, -50%) rotate(-14deg);
+  }
+
+  .hero-orbit--outer {
+    width: min(118vw, 1520px);
+    height: 560px;
+  }
+
+  .hero-orbit--inner {
+    width: min(78vw, 940px);
+    height: 318px;
+    border-color: rgba(245, 241, 232, 0.045);
+    transform: translate(-44%, -42%) rotate(-14deg);
+  }
+
+  .hero-copy {
+    position: relative;
+  }
+
+  .hero-copy::before {
+    content: "";
+    position: absolute;
+    left: -28px;
+    top: -30px;
+    width: 1px;
+    height: 118%;
+    background: linear-gradient(180deg, transparent, rgba(184, 150, 75, 0.36), transparent);
+  }
+
+  .hero-title {
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    text-shadow: 0 26px 70px rgba(0, 0, 0, 0.64);
+  }
+
+  .hero-title span {
+    color: transparent;
+    background: linear-gradient(92deg, var(--color-cream) 0%, #d8c083 58%, var(--color-brass) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .operator-brief {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(520px, calc(100vw - 48px));
+    padding: 28px;
+    border: 1px solid rgba(184, 150, 75, 0.28);
+    background:
+      linear-gradient(145deg, rgba(15, 14, 12, 0.94), rgba(6, 8, 11, 0.9)),
+      radial-gradient(circle at 18% 0%, rgba(184, 150, 75, 0.14), transparent 38%),
+      radial-gradient(circle at 100% 62%, rgba(49, 92, 168, 0.14), transparent 34%);
+    box-shadow:
+      0 42px 100px rgba(0, 0, 0, 0.62),
+      0 0 0 1px rgba(245, 241, 232, 0.035),
+      inset 0 1px 0 rgba(245, 241, 232, 0.06);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    transform: translate(-50%, -50%) rotate(-1.5deg);
+    font-family: var(--font-body);
+  }
+
+  .operator-brief::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(245, 241, 232, 0.05);
     pointer-events: none;
   }
-  .mockup {
-    position: absolute;
-    transform: var(--rest-transform);
-    opacity: 1;
-    transform-origin: center center;
-  }
 
-  /* C — n8n */
-  .mockup-n8n {
-    top: 18%;
-    left: 6%;
-    width: 220px;
-    opacity: 0.6;
-    filter: blur(1px);
-  }
-
-  /* B — Brief */
-  .mockup-brief {
-    top: 14%;
-    right: 8%;
-    width: 280px;
-  }
-  .brief-card {
-    background: #1A1A1A;
-    border: 1px solid rgba(184,150,75,0.32);
-    padding: 22px 22px 20px;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.65), 0 0 0 1px rgba(0,0,0,0.4);
-  }
-  .brief-header {
+  .operator-brief__topline,
+  .operator-brief__footer {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: baseline;
-    border-bottom: 1px solid rgba(184,150,75,0.15);
-    padding-bottom: 10px;
+    gap: 18px;
   }
-  .brief-eyebrow {
-    font-family: var(--font-serif);
-    font-size: 18px;
-    color: var(--color-cream);
-    letter-spacing: 0.04em;
-  }
-  .brief-day {
-    font-family: var(--font-sans);
+
+  .operator-brief__topline {
+    color: rgba(184, 150, 75, 0.86);
     font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
-    color: var(--color-brass);
+    font-weight: 500;
+    letter-spacing: 0.2em;
   }
-  .brief-list {
-    margin-top: 12px;
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+
+  .operator-brief__header {
+    margin-top: 42px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(245, 241, 232, 0.08);
   }
-  .brief-list li {
-    font-family: var(--font-sans);
+
+  .operator-brief__kicker {
+    margin: 0 0 10px;
+    color: rgba(245, 241, 232, 0.48);
     font-size: 12px;
+  }
+
+  .operator-brief__header h2 {
+    margin: 0;
     color: var(--color-cream);
-    line-height: 1.45;
+    font-family: var(--font-display);
+    font-size: 46px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 0.95;
   }
-  .brief-num {
-    font-family: var(--font-serif);
-    color: var(--color-brass);
+
+  .operator-brief__header p:last-child {
+    max-width: 360px;
+    margin: 14px 0 0;
+    color: rgba(245, 241, 232, 0.58);
     font-size: 14px;
-    margin-right: 4px;
-  }
-  .brief-meta {
-    color: var(--color-muted);
-    font-size: 11px;
+    line-height: 1.6;
   }
 
-  /* A — Telegram */
-  .mockup-tg {
-    top: 38%;
-    right: 18%;
-    width: 340px;
-    z-index: 3;
+  .operator-brief__ledger {
+    margin-top: 22px;
   }
-  .tg-card {
-    background: #212121;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.04);
+
+  .operator-brief__row {
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr) auto;
+    gap: 16px;
+    align-items: start;
+    padding: 17px 0;
+    border-bottom: 1px solid rgba(245, 241, 232, 0.065);
   }
-  .tg-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 14px;
-    background: #2C2C2C;
-    border-bottom: 1px solid #1A1A1A;
+
+  .operator-brief__row--hot {
+    color: var(--color-cream);
   }
-  .tg-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: #5288C1;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-serif);
-    font-size: 16px;
+
+  .operator-brief__index {
+    color: rgba(184, 150, 75, 0.86);
+    font-family: var(--font-display);
+    font-size: 15px;
   }
-  .tg-meta { line-height: 1.2; }
-  .tg-name { color: #fff; font-size: 13px; font-weight: 500; font-family: -apple-system, "Segoe UI", sans-serif; }
-  .tg-status { color: #8E8E8E; font-size: 11px; font-family: -apple-system, "Segoe UI", sans-serif; }
-  .tg-body {
-    padding: 16px 14px;
-    display: flex;
-    justify-content: flex-end;
-  }
-  .tg-bubble {
-    background: #2B5278;
-    color: #fff;
-    border-radius: 12px 12px 4px 12px;
-    padding: 12px 14px 10px;
-    max-width: 280px;
-    font-family: -apple-system, "Segoe UI", sans-serif;
+
+  .operator-brief__row p {
+    margin: 0;
+    color: rgba(245, 241, 232, 0.9);
     font-size: 13px;
-    line-height: 1.45;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-  }
-  .tg-bubble-title { font-weight: 600; margin-bottom: 6px; }
-  .tg-line { font-size: 12.5px; }
-  .tg-faint { color: rgba(255,255,255,0.78); font-size: 12px; }
-  .tg-spacer { height: 6px; }
-  .tg-time {
-    text-align: right;
-    margin-top: 4px;
-    color: rgba(255,255,255,0.55);
-    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.35;
   }
 
-  /* Mobile: collapse stage */
-  @media (max-width: 767px) {
-    .mockup-stage { display: none; }
-    .hero-glow { left: -10%; top: 8%; width: 540px; height: 540px; }
+  .operator-brief__row span:not(.operator-brief__index) {
+    display: block;
+    margin-top: 5px;
+    color: rgba(154, 154, 154, 0.88);
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .operator-brief__row strong {
+    color: rgba(184, 150, 75, 0.92);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .operator-brief__footer {
+    padding-top: 20px;
+  }
+
+  .operator-brief__footer span {
+    display: block;
+    color: rgba(245, 241, 232, 0.82);
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .operator-brief__footer p {
+    margin: 5px 0 0;
+    color: rgba(154, 154, 154, 0.72);
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .operator-brief__footer a {
+    color: var(--color-brass);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .operator-brief__rail {
+    position: absolute;
+    top: 28px;
+    right: -22px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .operator-brief__rail span {
+    width: 44px;
+    height: 1px;
+    background: rgba(184, 150, 75, 0.4);
+  }
+
+  .operator-side-note {
+    position: absolute;
+    right: 10%;
+    bottom: 18%;
+    display: flex;
+    gap: 12px;
+    color: rgba(245, 241, 232, 0.42);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transform: rotate(-4deg);
+  }
+
+  .operator-side-note span {
+    padding-top: 10px;
+    border-top: 1px solid rgba(184, 150, 75, 0.34);
+  }
+
+  @media (max-width: 768px) {
+    .operator-brief {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: 100%;
+      max-width: 100%;
+      padding: 22px;
+      transform: rotate(-1.5deg);
+      margin-top: 40px;
+    }
+
+    .operator-brief__header {
+      margin-top: 30px;
+    }
+
+    .operator-brief__header h2 {
+      font-size: 38px;
+    }
+
+    .operator-brief__row {
+      grid-template-columns: 28px minmax(0, 1fr);
+    }
+
+    .operator-brief__row strong {
+      grid-column: 2;
+    }
+
+    .operator-brief__footer {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .operator-brief__rail,
+    .operator-side-note {
+      display: none;
+    }
+
+    .hero-briefing-zone {
+      align-items: flex-start;
+    }
+
+    .hero-copy::before,
+    .hero-orbit {
+      display: none;
+    }
+
+    .hero-grid {
+      background-size: 72px 72px;
+      opacity: 0.18;
+      mask-image: linear-gradient(180deg, #000 0%, #000 70%, transparent 100%);
+    }
   }
 </style>
-
-<script>
-  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const els = Array.from(document.querySelectorAll<HTMLElement>("[data-parallax]"));
-
-  // Staggered entrance: 400ms initial, 200ms between elements (back → mid → front)
-  if (!prefersReduced && els.length) {
-    const ordered = els.slice().sort((a, b) =>
-      parseFloat(a.dataset.parallax || "1") - parseFloat(b.dataset.parallax || "1")
-    );
-    ordered.forEach((el, i) => {
-      setTimeout(() => el.classList.add("mockup-in"), 400 + i * 200);
-    });
-  } else {
-    els.forEach((el) => el.classList.add("mockup-in"));
-  }
-
-  // Throttled parallax (skip on reduced motion)
-  if (!prefersReduced && els.length) {
-    let ticking = false;
-    let lastY = window.scrollY;
-    const apply = () => {
-      for (const el of els) {
-        const speed = parseFloat(el.dataset.parallax || "1");
-        el.style.transform = `var(--rest-transform) translateY(${(-lastY * speed * 0.15).toFixed(1)}px)`;
-      }
-      ticking = false;
-    };
-    window.addEventListener(
-      "scroll",
-      () => {
-        lastY = window.scrollY;
-        if (!ticking) {
-          ticking = true;
-          setTimeout(apply, 16);
-        }
-      },
-      { passive: true }
-    );
-  }
-</script>
