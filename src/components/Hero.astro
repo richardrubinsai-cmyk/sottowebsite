@@ -12,99 +12,29 @@
   <div class="streak streak-1" aria-hidden="true"></div>
   <div class="streak streak-2" aria-hidden="true"></div>
 
-  <!-- Two-zone grid -->
-  <div class="hero-shell relative z-20 grid min-h-screen grid-cols-1 md:grid-cols-[5fr_6fr]">
-    <!-- Left text zone -->
-    <div class="hero-copy-zone flex min-h-screen items-center px-8 pb-20 pt-32 md:pl-14 md:pr-20 md:pt-0">
-      <div class="hero-copy max-w-[40rem]">
-        <p class="eyebrow">Quiet systems for serious operators.</p>
+  <div class="hero-shell relative z-20 flex min-h-screen items-center px-8 pb-20 pt-32 md:pl-14 md:pr-20 md:pt-0">
+    <div class="hero-copy max-w-[40rem]">
+      <p class="eyebrow">Quiet systems for serious operators.</p>
 
-        <h1
-          class="hero-title mt-10 font-serif font-normal text-cream"
-          style="font-size: clamp(3.3rem, 9.6vw, 8rem); line-height: 0.95;"
+      <h1
+        class="hero-title mt-10 font-serif font-normal text-cream"
+        style="font-size: clamp(3.3rem, 9.6vw, 8rem); line-height: 0.95;"
+      >
+        The operator&rsquo;s<br /><span>AI stack.</span>
+      </h1>
+
+      <p class="mt-10 max-w-[31rem] font-sans text-base leading-relaxed text-muted md:text-lg">
+        Sotto filters your inbox, captures leads, drafts replies, tracks payments, builds proposals,
+        schedules content, and briefs your day before you open your laptop.
+      </p>
+
+      <div class="mt-12">
+        <a
+          href="/#pricing"
+          class="hero-cta inline-block border border-brass px-8 py-3.5 font-sans text-xs uppercase tracking-[0.24em] text-brass hover:bg-brass hover:text-bg"
         >
-          The operator&rsquo;s<br /><span>AI stack.</span>
-        </h1>
-
-        <p class="mt-10 max-w-[31rem] font-sans text-base leading-relaxed text-muted md:text-lg">
-          Sotto filters your inbox, captures leads, drafts replies, tracks payments, builds proposals,
-          schedules content, and briefs your day before you open your laptop.
-        </p>
-
-        <div class="mt-12">
-          <a
-            href="/#pricing"
-            class="hero-cta inline-block border border-brass px-8 py-3.5 font-sans text-xs uppercase tracking-[0.24em] text-brass hover:bg-brass hover:text-bg"
-          >
-            Get the Playbook
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Right zone: Operator brief -->
-    <div
-      class="hero-briefing-zone relative flex min-h-[min(72vh,640px)] items-center justify-center px-6 pb-16 pt-6 md:min-h-0 md:px-10 md:pb-24 md:pt-28"
-    >
-      <div class="operator-brief" role="img" aria-label="Sotto Monday operator brief preview">
-        <div class="operator-brief__topline">
-          <span>SOTTO / MORNING BRIEF</span>
-          <span>07:42</span>
-        </div>
-
-        <div class="operator-brief__header">
-          <p class="operator-brief__kicker">Monday, 12 May</p>
-          <h2>Start here.</h2>
-          <p>Your inbox is filtered. Your calendar is clean. Three decisions need you.</p>
-        </div>
-
-        <div class="operator-brief__ledger">
-          <div class="operator-brief__row operator-brief__row--hot">
-            <span class="operator-brief__index">01</span>
-            <div>
-              <p>Hot lead from Marcus Chen</p>
-              <span>Pricing question + buying signal. Reply drafted.</span>
-            </div>
-            <strong>8/10</strong>
-          </div>
-
-          <div class="operator-brief__row">
-            <span class="operator-brief__index">02</span>
-            <div>
-              <p>Two invoices need a chase</p>
-              <span>Studio Mira and Henderson. Follow-ups queued.</span>
-            </div>
-            <strong>GBP 4.2k</strong>
-          </div>
-
-          <div class="operator-brief__row">
-            <span class="operator-brief__index">03</span>
-            <div>
-              <p>Proposal due Friday</p>
-              <span>Draft at 80%. Scope section needs approval.</span>
-            </div>
-            <strong>Draft</strong>
-          </div>
-        </div>
-
-        <div class="operator-brief__footer">
-          <div>
-            <span>Autopilot completed</span>
-            <p>Inbox triage / lead log / content schedule / payment scan</p>
-          </div>
-          <a href="#waitlist">Request access</a>
-        </div>
-
-        <div class="operator-brief__rail" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-
-      <div class="operator-side-note" aria-hidden="true">
-        <span>7 workflows</span>
-        <span>1 operating layer</span>
+          Get the Playbook
+        </a>
       </div>
     </div>
   </div>
@@ -184,196 +114,10 @@
     background-clip: text;
   }
 
-  .operator-brief {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: min(520px, calc(100vw - 48px));
-    padding: 28px;
-    border: 1px solid rgba(184, 150, 75, 0.28);
-    background:
-      linear-gradient(145deg, rgba(15, 14, 12, 0.94), rgba(6, 8, 11, 0.9)),
-      radial-gradient(circle at 18% 0%, rgba(184, 150, 75, 0.14), transparent 38%),
-      radial-gradient(circle at 100% 62%, rgba(49, 92, 168, 0.14), transparent 34%);
-    box-shadow:
-      0 42px 100px rgba(0, 0, 0, 0.62),
-      0 0 0 1px rgba(245, 241, 232, 0.035),
-      inset 0 1px 0 rgba(245, 241, 232, 0.06);
-    -webkit-backdrop-filter: blur(18px);
-    backdrop-filter: blur(18px);
-    transform: translate(-50%, -50%) rotate(-1.5deg);
-    font-family: var(--font-body);
-  }
-
-  .operator-brief::before {
-    content: "";
-    position: absolute;
-    inset: 10px;
-    border: 1px solid rgba(245, 241, 232, 0.05);
-    pointer-events: none;
-  }
-
-  .operator-brief__topline,
-  .operator-brief__footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-  }
-
-  .operator-brief__topline {
-    color: rgba(184, 150, 75, 0.86);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-  }
-
-  .operator-brief__header {
-    margin-top: 42px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid rgba(245, 241, 232, 0.08);
-  }
-
-  .operator-brief__kicker {
-    margin: 0 0 10px;
-    color: rgba(245, 241, 232, 0.48);
-    font-size: 12px;
-  }
-
-  .operator-brief__header h2 {
-    margin: 0;
-    color: var(--color-cream);
-    font-family: var(--font-display);
-    font-size: 46px;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    line-height: 0.95;
-  }
-
-  .operator-brief__header p:last-child {
-    max-width: 360px;
-    margin: 14px 0 0;
-    color: rgba(245, 241, 232, 0.58);
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  .operator-brief__ledger {
-    margin-top: 22px;
-  }
-
-  .operator-brief__row {
-    display: grid;
-    grid-template-columns: 32px minmax(0, 1fr) auto;
-    gap: 16px;
-    align-items: start;
-    padding: 17px 0;
-    border-bottom: 1px solid rgba(245, 241, 232, 0.065);
-  }
-
-  .operator-brief__row--hot {
-    color: var(--color-cream);
-  }
-
-  .operator-brief__index {
-    color: rgba(184, 150, 75, 0.86);
-    font-family: var(--font-display);
-    font-size: 15px;
-  }
-
-  .operator-brief__row p {
-    margin: 0;
-    color: rgba(245, 241, 232, 0.9);
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 1.35;
-  }
-
-  .operator-brief__row span:not(.operator-brief__index) {
-    display: block;
-    margin-top: 5px;
-    color: rgba(154, 154, 154, 0.88);
-    font-size: 12px;
-    line-height: 1.45;
-  }
-
-  .operator-brief__row strong {
-    color: rgba(184, 150, 75, 0.92);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-
-  .operator-brief__footer {
-    padding-top: 20px;
-  }
-
-  .operator-brief__footer span {
-    display: block;
-    color: rgba(245, 241, 232, 0.82);
-    font-size: 12px;
-    font-weight: 500;
-  }
-
-  .operator-brief__footer p {
-    margin: 5px 0 0;
-    color: rgba(154, 154, 154, 0.72);
-    font-size: 11px;
-    line-height: 1.4;
-  }
-
-  .operator-brief__footer a {
-    color: var(--color-brass);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-decoration: none;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-
-  .operator-brief__rail {
-    position: absolute;
-    top: 28px;
-    right: -22px;
-    display: grid;
-    gap: 8px;
-  }
-
-  .operator-brief__rail span {
-    width: 44px;
-    height: 1px;
-    background: rgba(184, 150, 75, 0.4);
-  }
-
-  .operator-side-note {
-    position: absolute;
-    right: 10%;
-    bottom: 18%;
-    display: flex;
-    gap: 12px;
-    color: rgba(245, 241, 232, 0.42);
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    transform: rotate(-4deg);
-  }
-
-  .operator-side-note span {
-    padding-top: 10px;
-    border-top: 1px solid rgba(184, 150, 75, 0.34);
-  }
-
   @media (max-width: 768px) {
     .hero-shell {
       min-height: auto;
-    }
-
-    .hero-copy-zone {
-      min-height: auto;
-      padding: 118px 20px 28px;
+      padding: 118px 20px 72px;
     }
 
     .hero-title {
@@ -399,64 +143,6 @@
       padding: 15px 18px;
       text-align: center;
       letter-spacing: 0.16em;
-    }
-
-    .hero-briefing-zone {
-      min-height: auto;
-      align-items: flex-start;
-      padding: 10px 20px 72px;
-    }
-
-    .operator-brief {
-      position: relative;
-      top: auto;
-      left: auto;
-      width: 100%;
-      max-width: 100%;
-      padding: 18px;
-      transform: none;
-      margin-top: 18px;
-    }
-
-    .operator-brief__header {
-      margin-top: 24px;
-      padding-bottom: 18px;
-    }
-
-    .operator-brief__header h2 {
-      font-size: 34px;
-    }
-
-    .operator-brief__header p:last-child {
-      font-size: 13px;
-      line-height: 1.55;
-    }
-
-    .operator-brief__row {
-      grid-template-columns: 28px minmax(0, 1fr);
-      gap: 12px;
-      padding: 14px 0;
-    }
-
-    .operator-brief__row strong {
-      grid-column: 2;
-      margin-top: 2px;
-    }
-
-    .operator-brief__footer {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-
-    .operator-brief__rail,
-    .operator-side-note {
-      display: none;
-    }
-
-    .operator-brief__topline {
-      gap: 12px;
-      font-size: 9px;
-      letter-spacing: 0.14em;
     }
 
     .hero-copy::before,
