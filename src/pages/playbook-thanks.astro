@@ -1,0 +1,108 @@
+---
+const fontStylesheet = "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@300;400;500;600&display=swap";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Thank you — Sotto</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#0A0A0A" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href={fontStylesheet} />
+    <link rel="stylesheet" href={fontStylesheet} media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href={fontStylesheet} /></noscript>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html {
+        background: #0A0A0A;
+        color: #F5F1E8;
+        font-family: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      body {
+        min-height: 100svh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1.5rem;
+        background:
+          radial-gradient(circle at 12% 8%, rgba(184, 150, 75, 0.08), transparent 30rem),
+          radial-gradient(circle at 88% 28%, rgba(38, 55, 106, 0.18), transparent 34rem),
+          linear-gradient(180deg, #0a0a0a 0%, #070707 48%, #0d0c09 100%);
+      }
+
+      .card {
+        text-align: center;
+        max-width: 480px;
+        width: 100%;
+      }
+
+      .wordmark {
+        font-family: "Fraunces", ui-serif, Georgia, serif;
+        font-size: 1.25rem;
+        font-weight: 400;
+        letter-spacing: 0.22em;
+        color: #F5F1E8;
+        text-decoration: none;
+        display: inline-block;
+        margin-bottom: 3rem;
+      }
+
+      .eyebrow {
+        font-family: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        font-size: 0.6875rem;
+        font-weight: 500;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: #B8964B;
+        margin-bottom: 1.25rem;
+      }
+
+      .headline {
+        font-family: "Fraunces", ui-serif, Georgia, serif;
+        font-size: clamp(2.5rem, 7vw, 3.75rem);
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        line-height: 1.05;
+        color: #F5F1E8;
+        margin-bottom: 1.5rem;
+      }
+
+      .subtext {
+        font-family: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        font-size: 0.9375rem;
+        font-weight: 300;
+        line-height: 1.7;
+        color: #9A9A9A;
+      }
+
+      .subtext a {
+        color: #B8964B;
+        text-decoration: none;
+      }
+
+      .subtext a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <a href="/" class="wordmark">Sotto</a>
+      <p class="eyebrow">The Playbook</p>
+      <h1 class="headline">You're in.</h1>
+      <p class="subtext">
+        Your copy is on its way. Check your inbox — including spam.<br />
+        If nothing arrives within 10 minutes, email <a href="mailto:hello@bysotto.com">hello@bysotto.com</a>
+      </p>
+    </div>
+  </body>
+</html>
