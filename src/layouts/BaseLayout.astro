@@ -64,9 +64,9 @@ const fontStylesheet = "https://fonts.googleapis.com/css2?family=Fraunces:opsz,w
     <!-- Sticky CTA — appears after hero leaves viewport -->
     <a
       id="sticky-cta"
-      href="#waitlist"
+      href="#contact"
       class="sticky-cta"
-      aria-label="Request access — jump to waitlist"
+      aria-label="Get in touch — jump to contact form"
     >
       Request Access
     </a>
@@ -100,7 +100,7 @@ const fontStylesheet = "https://fonts.googleapis.com/css2?family=Fraunces:opsz,w
       // Sticky CTA visibility — show after hero leaves, hide when waitlist enters
       const sticky = document.getElementById("sticky-cta");
       const hero = document.querySelector<HTMLElement>("[data-hero-section]");
-      const waitlist = document.getElementById("waitlist");
+      const waitlist = document.getElementById("contact");
 
       let heroVisible = true;
       let waitlistVisible = false;
@@ -141,7 +141,7 @@ const fontStylesheet = "https://fonts.googleapis.com/css2?family=Fraunces:opsz,w
         window.scrollTo({ top, behavior: prefersReduced ? "auto" : "smooth" });
       }
       document
-        .querySelectorAll<HTMLAnchorElement>('a[href="#waitlist"]')
+        .querySelectorAll<HTMLAnchorElement>('a[href="#contact"]')
         .forEach((a) => a.addEventListener("click", scrollToWaitlist));
     </script>
   </body>
