@@ -1,291 +1,243 @@
 ---
 ---
 
-<section id="waitlist" class="section-band section-band--waitlist reveal px-6 py-28 md:py-40">
-  <div class="mx-auto" style="max-width: 560px;">
+<section id="pricing" class="section-band section-band--waitlist reveal px-6 py-28 md:py-40">
+  <div class="mx-auto" style="max-width: 640px;">
     <div class="text-center">
-      <p class="eyebrow" style="display:inline-flex;">Now Available</p>
+      <p class="eyebrow" style="display:inline-flex;">Pricing</p>
       <h2 class="mt-6 font-serif text-4xl font-normal leading-tight text-cream md:text-5xl">
-        Get the Playbook.
+        One offer. Built in 7 days.
       </h2>
       <p class="mt-5 font-sans text-base leading-relaxed text-muted">
-        The complete AI/automation stack for serious operators. Instant PDF delivery on purchase.
+        No tiers, no upsell. One productized build, then maintained for you every month.
+      </p>
+    </div>
+  </div>
+
+  <div class="agency-card mx-auto mt-16">
+    <p class="agency-eyebrow">The Agency Engine</p>
+
+    <div class="agency-price-block">
+      <div class="agency-price-row">
+        <span class="agency-price-label">Setup</span>
+        <span class="agency-price-value">£1,500</span>
+        <span class="agency-price-suffix">one-time</span>
+      </div>
+      <div class="agency-price-row">
+        <span class="agency-price-label">Then</span>
+        <span class="agency-price-value">£450</span>
+        <span class="agency-price-suffix">/ month &middot; 3-month minimum</span>
+      </div>
+    </div>
+
+    <p class="agency-includes-label">What you get</p>
+    <ul class="agency-items">
+      <li>7 workflows built and installed on your accounts</li>
+      <li>Lead intake, proposal engine, client reporting, follow-up automation</li>
+      <li>Discovery call + 7-day build + Loom walkthrough</li>
+      <li>Monthly maintenance, monitoring, minor changes</li>
+      <li>Direct access &mdash; we fix things the same day</li>
+    </ul>
+
+    <div class="agency-guarantee">
+      <p class="agency-guarantee-label">Guarantee</p>
+      <p class="agency-guarantee-body">
+        If your Agency Engine isn&rsquo;t live and working within 7 business days, you get the setup fee back. No questions.
       </p>
     </div>
 
-    <div class="access-includes mt-12">
-      <div>
-        <span>01</span>
-        <p>Private launch build</p>
-      </div>
-      <div>
-        <span>02</span>
-        <p>Workflow map + setup notes</p>
-      </div>
-      <div>
-        <span>03</span>
-        <p>Direct founder access</p>
-      </div>
-    </div>
-
-    <div class="waitlist-cta mt-16" id="waitlist-cta">
-      <a
-        href="#pricing"
-        class="cta-button"
-      >
-        Get the Playbook
-      </a>
-    </div>
+    <a
+      href="https://calendly.com/bysottoco/30min"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="agency-cta"
+    >
+      Book a 15-min audit call
+    </a>
   </div>
 
-  <div id="pricing" class="pricing-grid mx-auto mt-20" style="max-width: 1080px;">
-
-    <div class="pricing-card">
-      <p class="pricing-tier-name">The Playbook</p>
-      <p class="pricing-price">£49</p>
-      <ul class="pricing-items">
-        <li>PDF playbook</li>
-        <li>7 n8n workflow files</li>
-        <li>Setup guide</li>
-      </ul>
-      <a
-        href="https://buy.stripe.com/3cIaEW8t826AeCCbd753O04"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="pricing-btn"
-      >Buy Now</a>
-    </div>
-
-    <div class="pricing-card pricing-card--featured">
-      <p class="pricing-badge">Recommended</p>
-      <p class="pricing-tier-name">The Operator Pack</p>
-      <p class="pricing-price">£147</p>
-      <ul class="pricing-items">
-        <li>Everything in Playbook</li>
-        <li>Prompt library</li>
-        <li>Loom video walkthroughs</li>
-        <li>Ready-to-import n8n templates</li>
-      </ul>
-      <a href="https://buy.stripe.com/fZudR8bFk6mQfGGbd753O02" target="_blank" rel="noopener noreferrer" class="pricing-btn">Buy Now</a>
-    </div>
-
-    <div class="pricing-card">
-      <p class="pricing-tier-name">Done For You</p>
-      <p class="pricing-price">£1,520</p>
-      <ul class="pricing-items">
-        <li>Full system built and installed on your account</li>
-        <li>Credentials configured, tested end-to-end</li>
-        <li>30-min kickoff call</li>
-      </ul>
-      <a href="https://buy.stripe.com/dRm3cucJoh1ucuugxr53O05" target="_blank" rel="noopener noreferrer" class="pricing-btn">Apply Now</a>
-    </div>
-
-  </div>
+  <p class="agency-footnote mx-auto mt-12">
+    Not sure if it&rsquo;s a fit? The audit call is 15 minutes, no pitch. We tell you whether automation will move the needle for you, or it won&rsquo;t.
+  </p>
 </section>
 
 <style>
-  .access-includes {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid rgba(184, 150, 75, 0.24);
-    border-left: 1px solid rgba(245, 241, 232, 0.08);
+  .agency-card {
+    max-width: 640px;
+    padding: 48px 44px 44px;
+    background: rgba(10, 10, 10, 0.72);
+    border: 1px solid rgba(184, 150, 75, 0.42);
+    outline: 1px solid rgba(184, 150, 75, 0.12);
+    outline-offset: 6px;
+    position: relative;
   }
 
-  .access-includes div {
-    min-height: 112px;
-    padding: 18px;
-    border-right: 1px solid rgba(245, 241, 232, 0.08);
-    border-bottom: 1px solid rgba(245, 241, 232, 0.08);
-    background: rgba(10, 10, 10, 0.22);
-  }
-
-  .access-includes span {
-    color: var(--color-brass);
-    font-family: var(--font-display);
-    font-size: 18px;
-  }
-
-  .access-includes p {
-    margin: 22px 0 0;
-    color: rgba(245, 241, 232, 0.76);
+  .agency-eyebrow {
+    margin: 0 0 28px;
     font-family: var(--font-body);
-    font-size: 12px;
-    line-height: 1.45;
-  }
-
-  .waitlist-cta {
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--color-brass);
     text-align: center;
   }
 
-  .cta-button {
+  .agency-price-block {
+    border-top: 1px solid rgba(245, 241, 232, 0.08);
+    border-bottom: 1px solid rgba(245, 241, 232, 0.08);
+    padding: 22px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .agency-price-row {
+    display: grid;
+    grid-template-columns: 64px auto 1fr;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  .agency-price-label {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: rgba(245, 241, 232, 0.58);
+  }
+
+  .agency-price-value {
+    font-family: var(--font-display);
+    font-size: 40px;
+    color: var(--color-brass);
+    letter-spacing: 0.01em;
+    line-height: 1;
+  }
+
+  .agency-price-suffix {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: rgba(245, 241, 232, 0.62);
+  }
+
+  .agency-includes-label {
+    margin: 32px 0 16px;
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: rgba(245, 241, 232, 0.58);
+  }
+
+  .agency-items {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .agency-items li {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: rgba(245, 241, 232, 0.82);
+    line-height: 1.5;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .agency-items li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--color-brass);
+    opacity: 0.7;
+  }
+
+  .agency-guarantee {
+    padding: 20px 22px;
+    margin: 0 0 32px;
+    background: rgba(184, 150, 75, 0.07);
+    border-left: 2px solid var(--color-brass);
+  }
+
+  .agency-guarantee-label {
+    margin: 0 0 8px;
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--color-brass);
+  }
+
+  .agency-guarantee-body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--color-cream);
+  }
+
+  .agency-cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 56px;
     border: 1px solid var(--color-brass);
+    background: var(--color-brass);
+    color: var(--color-bg);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    text-decoration: none;
+    transition: background-color 260ms ease, color 260ms ease, border-color 260ms ease;
+  }
+
+  .agency-cta:hover {
     background: transparent;
     color: var(--color-brass);
-    font-family: var(--font-serif);
+  }
+
+  .agency-footnote {
+    max-width: 560px;
+    text-align: center;
+    font-family: var(--font-body);
     font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    text-decoration: none;
-    transition: background-color 280ms ease, color 280ms ease;
-  }
-
-  .cta-button:hover {
-    background: var(--color-brass);
-    color: var(--color-bg);
-  }
-
-  /* ── Pricing grid ── */
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: rgba(184, 150, 75, 0.18);
-    border: 1px solid rgba(184, 150, 75, 0.18);
-  }
-
-  .pricing-card {
-    display: flex;
-    flex-direction: column;
-    padding: 36px 32px 32px;
-    background: rgba(10, 10, 10, 0.72);
-    position: relative;
-  }
-
-  .pricing-card--featured {
-    background: rgba(184, 150, 75, 0.06);
-    outline: 1px solid var(--color-brass);
-    outline-offset: -1px;
-    z-index: 1;
-  }
-
-  .pricing-badge {
-    font-family: var(--font-sans);
-    font-size: 9px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--color-brass);
-    margin: 0 0 16px;
-  }
-
-  .pricing-tier-name {
-    font-family: var(--font-serif);
-    font-size: 18px;
-    font-weight: 400;
-    color: var(--color-cream);
-    margin: 0 0 12px;
-  }
-
-  /* push tier name down to align with featured card that has the badge */
-  .pricing-card:not(.pricing-card--featured) .pricing-tier-name {
-    margin-top: 25px;
-  }
-
-  .pricing-price {
-    font-family: var(--font-display);
-    font-size: 36px;
-    color: var(--color-brass);
-    margin: 0 0 28px;
-    letter-spacing: 0.02em;
-  }
-
-  .pricing-items {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 32px;
-    flex: 1;
-    border-top: 1px solid rgba(245, 241, 232, 0.08);
-    padding-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .pricing-items li {
-    font-family: var(--font-sans);
-    font-size: 13px;
-    color: rgba(245, 241, 232, 0.72);
-    line-height: 1.45;
-    padding-left: 16px;
-    position: relative;
-  }
-
-  .pricing-items li::before {
-    content: "—";
-    position: absolute;
-    left: 0;
-    color: var(--color-brass);
-    opacity: 0.6;
-  }
-
-  .pricing-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 48px;
-    border: 1px solid var(--color-brass);
-    background: transparent;
-    color: var(--color-brass);
-    font-family: var(--font-sans);
-    font-size: 10px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    text-decoration: none;
-    transition: background-color 260ms ease, color 260ms ease;
-    margin-top: auto;
-  }
-
-  .pricing-btn:hover {
-    background: var(--color-brass);
-    color: var(--color-bg);
+    line-height: 1.6;
+    color: var(--color-muted);
   }
 
   @media (max-width: 640px) {
-    .access-includes {
+    .agency-card {
+      padding: 32px 22px 28px;
+      outline-offset: 4px;
+    }
+
+    .agency-price-row {
       grid-template-columns: 1fr;
-      margin-top: 36px;
+      gap: 4px;
     }
 
-    .access-includes div {
-      min-height: auto;
-      padding: 16px 18px;
-      display: grid;
-      grid-template-columns: 44px minmax(0, 1fr);
-      align-items: baseline;
-      gap: 12px;
+    .agency-price-value {
+      font-size: 34px;
     }
 
-    .access-includes p {
-      margin: 0;
-      font-size: 13px;
-    }
-
-    .cta-button {
+    .agency-cta {
       height: 58px;
-      font-size: 13px;
+      font-size: 12px;
       letter-spacing: 0.16em;
     }
 
-    .pricing-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .pricing-card:not(.pricing-card--featured) .pricing-tier-name {
-      margin-top: 0;
-    }
-
-    .pricing-card {
-      padding: 28px 22px 24px;
-    }
-
-    .pricing-price {
-      font-size: 30px;
+    .agency-footnote {
+      font-size: 13px;
     }
   }
 </style>

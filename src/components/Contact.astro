@@ -2,314 +2,65 @@
 ---
 
 <section id="contact" class="section-band section-band--waitlist reveal px-6 py-28 md:py-40">
-  <div class="contact-inner mx-auto">
+  <div class="contact-inner mx-auto text-center">
 
-    <div class="contact-header">
-      <p class="eyebrow" style="display:inline-flex;">Get in Touch</p>
-      <h2 class="mt-6 font-serif text-4xl font-normal leading-tight text-cream md:text-5xl">
-        Let's talk.
-      </h2>
-      <p class="mt-5 font-sans text-base leading-relaxed text-muted">
-        Tell us a little about your operation. We'll follow up directly.
-      </p>
-    </div>
+    <p class="eyebrow" style="display:inline-flex;">Audit Call</p>
+    <h2 class="mt-6 font-serif text-4xl font-normal leading-tight text-cream md:text-5xl">
+      Let&rsquo;s see if there&rsquo;s a fit.
+    </h2>
+    <p class="mx-auto mt-5 max-w-[34rem] font-sans text-base leading-relaxed text-muted">
+      15-minute audit call. No pitch. We look at your current setup, show you the 2&ndash;3 things we&rsquo;d automate first, and you decide if it&rsquo;s worth a build.
+    </p>
 
-    <form id="contact-form" class="contact-form" novalidate>
-      <div class="form-row">
-        <div class="form-field">
-          <label for="cf-name" class="field-label">Name</label>
-          <input
-            id="cf-name"
-            name="name"
-            type="text"
-            autocomplete="name"
-            required
-            class="field-input"
-            placeholder="Your name"
-          />
-          <span class="focus-bar" aria-hidden="true"></span>
-        </div>
-
-        <div class="form-field">
-          <label for="cf-email" class="field-label">Email</label>
-          <input
-            id="cf-email"
-            name="email"
-            type="email"
-            autocomplete="email"
-            required
-            class="field-input"
-            placeholder="you@example.com"
-          />
-          <span class="focus-bar" aria-hidden="true"></span>
-        </div>
-      </div>
-
-      <div class="form-field">
-        <label for="cf-role" class="field-label">What do you do</label>
-        <input
-          id="cf-role"
-          name="what_you_do"
-          type="text"
-          required
-          class="field-input"
-          placeholder="e.g. run a boutique hotel group"
-        />
-        <span class="focus-bar" aria-hidden="true"></span>
-      </div>
-
-      <div class="form-field">
-        <label for="cf-bottleneck" class="field-label">Biggest bottleneck</label>
-        <textarea
-          id="cf-bottleneck"
-          name="biggest_bottleneck"
-          required
-          class="field-input field-textarea"
-          placeholder="Where are you losing the most time or money?"
-          rows="4"
-        ></textarea>
-        <span class="focus-bar" aria-hidden="true"></span>
-      </div>
-
-      <div class="form-actions">
-        <button type="submit" class="submit-btn" id="cf-submit">
-          <span class="btn-label">Get in Touch</span>
-          <span class="btn-sending" aria-hidden="true">Sending…</span>
-        </button>
-      </div>
-
-      <p class="form-error" id="cf-error" role="alert" aria-live="polite"></p>
-    </form>
-
-    <div class="form-success" id="cf-success" aria-live="polite">
-      <p class="success-rule" aria-hidden="true"></p>
-      <p class="success-message">We'll be in touch.</p>
+    <div class="contact-cta-wrap mt-12">
+      <a
+        href="https://calendly.com/bysottoco/30min"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="contact-cta"
+      >
+        Book a 15-min audit call
+      </a>
     </div>
 
   </div>
 </section>
-
-<script>
-  const form = document.getElementById('contact-form') as HTMLFormElement | null;
-  const success = document.getElementById('cf-success');
-  const errorEl = document.getElementById('cf-error');
-  const submitBtn = document.getElementById('cf-submit') as HTMLButtonElement | null;
-
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (!form || !submitBtn) return;
-
-    const data = Object.fromEntries(new FormData(form));
-    errorEl!.textContent = '';
-    submitBtn.disabled = true;
-    submitBtn.classList.add('is-sending');
-
-    try {
-      const res = await fetch('https://n8n.bysotto.com/webhook/sotto-lead', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: data.name,
-          email: data.email,
-          what_you_do: data.what_you_do,
-          biggest_bottleneck: data.biggest_bottleneck,
-        }),
-      });
-
-      if (!res.ok) throw new Error(`${res.status}`);
-
-      form.style.display = 'none';
-      success!.classList.add('is-visible');
-    } catch {
-      errorEl!.textContent = 'Something went wrong. Please try again or email us directly.';
-      submitBtn.disabled = false;
-      submitBtn.classList.remove('is-sending');
-    }
-  });
-</script>
 
 <style>
   .contact-inner {
     max-width: 640px;
   }
 
-  .contact-header {
-    margin-bottom: 52px;
-  }
-
-  /* ── Form layout ── */
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 36px;
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 36px 32px;
-  }
-
-  /* ── Field ── */
-  .form-field {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .field-label {
-    font-family: var(--font-body);
-    font-size: 9px;
-    font-weight: 500;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--color-brass);
-    opacity: 0.9;
-  }
-
-  .field-input {
-    width: 100%;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid rgba(245, 241, 232, 0.14);
-    padding: 0 0 12px;
-    font-family: var(--font-body);
-    font-size: 14px;
-    color: var(--color-cream);
-    outline: none;
-    appearance: none;
-    -webkit-appearance: none;
-    resize: none;
-  }
-
-  .field-input::placeholder {
-    color: rgba(245, 241, 232, 0.28);
-  }
-
-  .field-textarea {
-    padding-top: 0;
-    line-height: 1.6;
-  }
-
-  /* Focus bar already defined in global.css but scoped here for textarea too */
-  .form-field .focus-bar {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 1px;
-    width: 100%;
-    background: var(--color-brass);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 250ms ease-out;
-    pointer-events: none;
-  }
-
-  .form-field:focus-within .focus-bar {
-    transform: scaleX(1);
-  }
-
-  /* ── Submit ── */
-  .form-actions {
-    margin-top: 4px;
-  }
-
-  .submit-btn {
+  .contact-cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    min-width: 280px;
     height: 56px;
+    padding: 0 32px;
     border: 1px solid var(--color-brass);
-    background: transparent;
-    color: var(--color-brass);
-    font-family: var(--font-serif);
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    cursor: pointer;
-    transition: background-color 280ms ease, color 280ms ease;
-    position: relative;
-  }
-
-  .submit-btn:hover:not(:disabled) {
     background: var(--color-brass);
     color: var(--color-bg);
-  }
-
-  .submit-btn:disabled {
-    opacity: 0.6;
-    cursor: default;
-  }
-
-  .btn-sending {
-    display: none;
-    position: absolute;
-  }
-
-  .submit-btn.is-sending .btn-label {
-    visibility: hidden;
-  }
-
-  .submit-btn.is-sending .btn-sending {
-    display: inline;
-  }
-
-  /* ── Error ── */
-  .form-error {
     font-family: var(--font-body);
     font-size: 12px;
-    color: rgba(200, 100, 80, 0.9);
-    letter-spacing: 0.02em;
-    min-height: 1em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    text-decoration: none;
+    transition: background-color 260ms ease, color 260ms ease;
   }
 
-  /* ── Success ── */
-  .form-success {
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-    padding: 48px 0;
-  }
-
-  .form-success.is-visible {
-    display: flex;
-  }
-
-  .success-rule {
-    width: 40px;
-    height: 1px;
-    background: var(--color-brass);
-    opacity: 0.7;
-    margin: 0;
-  }
-
-  .success-message {
-    font-family: var(--font-display);
-    font-size: clamp(1.8rem, 5vw, 2.75rem);
-    font-weight: 400;
-    color: var(--color-cream);
-    letter-spacing: -0.02em;
-    font-variation-settings: "opsz" 96;
-    margin: 0;
-    line-height: 1.1;
+  .contact-cta:hover {
+    background: transparent;
+    color: var(--color-brass);
   }
 
   @media (max-width: 600px) {
-    .form-row {
-      grid-template-columns: 1fr;
-      gap: 36px;
-    }
-
-    .contact-header {
-      margin-bottom: 40px;
-    }
-
-    .submit-btn {
+    .contact-cta {
+      width: 100%;
+      min-width: 0;
       height: 58px;
-      font-size: 13px;
+      font-size: 12px;
       letter-spacing: 0.16em;
     }
   }

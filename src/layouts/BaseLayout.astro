@@ -8,8 +8,8 @@ interface Props {
 }
 
 const {
-  title = "Sotto — Quiet systems for serious operators.",
-  description = "Seven AI workflows that run your inbox, leads, content, payments, and meetings — built for people running a business with one set of hands.",
+  title = "Sotto — Back-office automation for UK marketing agencies.",
+  description = "Done-for-you automation for UK digital marketing agencies. Lead intake, proposals, follow-up, reporting — built in 7 days, maintained forever.",
 } = Astro.props;
 
 const ogImage = new URL("/og-image.png", Astro.site ?? Astro.url).toString();
@@ -64,11 +64,13 @@ const fontStylesheet = "https://fonts.googleapis.com/css2?family=Fraunces:opsz,w
     <!-- Sticky CTA — appears after hero leaves viewport -->
     <a
       id="sticky-cta"
-      href="#contact"
+      href="https://calendly.com/bysottoco/30min"
+      target="_blank"
+      rel="noopener noreferrer"
       class="sticky-cta"
-      aria-label="Get in touch — jump to contact form"
+      aria-label="Book a 15-minute audit call"
     >
-      Request Access
+      Book an audit
     </a>
 
     <script>
